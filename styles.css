@@ -1,0 +1,39 @@
+.title {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 20px 0;
+}
+
+.middle-section {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.players {
+    display: flex;
+    justify-content: center;
+    margin: 15px auto 0px auto;
+    font-size: large;
+}
+
+.Gameboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    width: fit-content;
+    border: 3px solid #333;
+    background-color: #14060618;
+    padding: 10px;
+}
+
+.Gameboard div {
+    background: #f9f9f9;
+    border: 2px solid #333;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+}
