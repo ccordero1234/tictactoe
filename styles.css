@@ -12,9 +12,16 @@
 
 .players {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin: 15px auto 0px auto;
     font-size: large;
+}
+
+.players input {
+    margin: 5px;
+    padding: 5px;
+    font-size: 16px;
 }
 
 .Gameboard {
@@ -36,4 +43,38 @@
     align-items: center;
     height: 100px;
     width: 100px;
+}
+
+.Gameboard div:hover {
+    background: #f9f9f90d;
+    cursor: pointer;
+}
+
+.bottom-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.result {
+    font-size: 1.5em;
+    margin: 10px;
+}
+
+.bottom-section button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.bottom-section button:hover {
+    background: #333;
+    color: white;
+}
+
+.reset{
+    display: none;
 }
