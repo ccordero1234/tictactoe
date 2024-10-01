@@ -9,9 +9,14 @@
 <body>
     <h1 class="title">TicTacToe</h1>
     <section class="middle-section">
-        <div class="players">
+        <div class="players" id="player-one-side">
             <h2>Player 1</h2>
             <input class="player-one" type="text" placeholder="Enter your name">
+            <svg class="x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <!-- X -->
+                <line x1="40" y1="40" x2="60" y2="60" stroke="black" stroke-width="3" />
+                <line x1="60" y1="40" x2="40" y2="60" stroke="black" stroke-width="3" />
+            </svg>
         </div>
         <div class="Gameboard">
             <div class="cell1"></div>
@@ -24,14 +29,19 @@
             <div class="cell8"></div>
             <div class="cell9"></div>
         </div>
-        <div class="players">
+        <div class="players" id="player-two-side">
             <h2>Player 2</h2>
             <input class="player-two" type="text" placeholder="Enter your name">
+            <svg class="o" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" > 
+                <!-- O -->
+                <circle cx="50" cy="50" r="10" stroke="black" stroke-width="3" fill="none" />
+            </svg>
+
         </div>
     </section>
     <section class="bottom-section">
         <div>
-            <p class="results"></p>
+            <p class="message"></p>
         </div>
         <div>
             <button class="start">Start</button>

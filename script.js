@@ -47,14 +47,29 @@ TicTacToe.prototype.print = function () {
     console.log(str);
 }
 
-// create a new game
-const game = new TicTacToe('X', 'O');
-
 // play the game
-while (!checkWinner(game.board) && game.board.includes(null)) {
-    game.play(Math.floor(Math.random() * 9));
-    game.print();
-}
+//while (!checkWinner(game.board) && game.board.includes(null)) {
+//    game.play(Math.floor(Math.random() * 9));
+//    game.print();
+//}
 
 // print the winner
-console.log(checkWinner(game.board) ? `Winner: ${checkWinner(game.board)}` : 'Draw');
+//console.log(checkWinner(game.board) ? `Winner: ${checkWinner(game.board)}` : 'Draw');
+
+// UI functionality 
+const cells = document.querySelectorAll('.cell');
+const message = document.querySelector('.message');
+const restart = document.querySelector('.restart');
+const start  = document.querySelector('.start');
+
+start.addEventListener('click', function(e) {
+    const player1 = document.querySelector('.player-one').value;
+    const player2 = document.querySelector('.player-two').value;
+    if (player1 === "" && player2 === "") {
+        message.textContent = 'Please enter players names';
+    } else {
+        // create a new game
+        const game = new TicTacToe(player1, player2);
+        message.textContent = `${game.currentPlayer}'s turn`;
+    }
+})

@@ -16,12 +16,24 @@
     align-items: center;
     margin: 15px auto 0px auto;
     font-size: large;
+    border-radius: 35px;
+    border: 6px solid #333;
 }
 
 .players input {
     margin: 5px;
     padding: 5px;
     font-size: 16px;
+    border-radius: 35px;
+    text-align: center;
+}
+
+#player-one-side {
+    background-color: rgba(0, 183, 255, 0.744);
+}
+
+#player-two-side {
+    background-color: #db413ebc;
 }
 
 .Gameboard {
@@ -58,7 +70,7 @@
     margin-top: 20px;
 }
 
-.result {
+.message {
     font-size: 1.5em;
     margin: 10px;
 }
