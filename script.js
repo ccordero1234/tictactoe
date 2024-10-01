@@ -28,48 +28,72 @@ function checkWinner(board) {
 // play function
 TicTacToe.prototype.play = function (i) {
     if (this.board[i] || checkWinner(this.board)) {
-        return;
+        return false;
+    } else {
+        this.board[i] = this.currentPlayer;
+        return true;
     }
-    this.board[i] = this.currentPlayer;
+}
+
+// switch player function
+TicTacToe.prototype.switchPlayer = function () {
     this.currentPlayer = this.currentPlayer === this.player1 ? this.player2 : this.player1;
 }
-
-// print function
-TicTacToe.prototype.print = function () {
-    let str = '';
-    // loop through the board
-    for (let i = 0; i < this.board.length; i++) {
-        str += this.board[i] ? this.board[i] : '-';
-        if ((i + 1) % 3 === 0) {
-            str += '\n';
-        }
-    }
-    console.log(str);
-}
-
-// play the game
-//while (!checkWinner(game.board) && game.board.includes(null)) {
-//    game.play(Math.floor(Math.random() * 9));
-//    game.print();
-//}
-
-// print the winner
-//console.log(checkWinner(game.board) ? `Winner: ${checkWinner(game.board)}` : 'Draw');
 
 // UI functionality 
 const cells = document.querySelectorAll('.cell');
 const message = document.querySelector('.message');
-const restart = document.querySelector('.restart');
 const start  = document.querySelector('.start');
+let game;
 
+// start game
 start.addEventListener('click', function(e) {
+    start.textContent = 'Start';
     const player1 = document.querySelector('.player-one').value;
     const player2 = document.querySelector('.player-two').value;
     if (player1 === "" && player2 === "") {
         message.textContent = 'Please enter players names';
     } else {
         // create a new game
-        const game = new TicTacToe(player1, player2);
+        game = new TicTacToe(player1, player2);
         message.textContent = `${game.currentPlayer}'s turn`;
+
+        // Clear the board UI
+        cells.forEach(cell => {
+            cell.textContent = "";
+            cell.addEventListener('click', handleMove, { once: true }); // Listen for moves
+        });
     }
 })
+
+// Function to handle a move
+function handleMove(e) {
+    const cell = e.target;
+    const index = Array.from(cells).indexOf(cell);
+
+    // Make a move in the game
+    if (game.play(index)) {
+        cell.textContent = game.currentPlayer === game.player1 ? 'X' : 'O';
+
+        // Check for winner
+        if (checkWinner(game.board)) {
+            message.textContent = `${game.currentPlayer} wins!`;
+            disableBoard();
+            start.textContent = 'Play Again';
+        } else if (!game.board.includes(null)) {
+            message.textContent = "It's a tie!";
+            start.textContent = 'Play Again';
+        } else {
+            // Switch players
+            game.switchPlayer();
+            message.textContent = `${game.currentPlayer}'s turn`;
+        }
+    }
+}
+
+// Disable further moves after the game ends
+function disableBoard() {
+    cells.forEach(cell => {
+        cell.removeEventListener('click', handleMove);
+    });
+}
