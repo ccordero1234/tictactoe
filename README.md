@@ -2,6 +2,8 @@
 
 A simple implementation of the classic Tic-Tac-Toe game, playable by two players on the same device.
 
+**[Play the game here!](https://ccordero1234.github.io/tictactoe/)**  
+
 ## Features
 - Two-player mode
 - 3x3 grid game board
